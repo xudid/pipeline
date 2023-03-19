@@ -1,2 +1,2 @@
-# pipeline
-Exécutes middleware's
+# Pipeline
+Exécutes middlewares
