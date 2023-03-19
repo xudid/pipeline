@@ -1,6 +1,7 @@
 {
     "name": "xudid/pipeline",
     "description": "Execute middlewares",
+    "licence": "MIT",
     "type": "library",
     "require-dev": {
         "phpunit/phpunit": "^10.0"
