@@ -1,5 +1,5 @@
 <?php
-namespace App\Pipeline;
+namespace Xudid\Pipeline;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -51,6 +51,7 @@ class Pipeline implements RequestHandlerInterface
      */
     public function pipe(MiddlewareInterface $middleware){
         $this->middlewares[]=$middleware;
+        return $this;
     }
     /**
      * @param ServerRequestInterface $request : the incomming Request
@@ -66,8 +67,8 @@ class Pipeline implements RequestHandlerInterface
             $this->response = $middleware->process($this->request,$this);
 
 
-            $statuscode = $this->response->getStatusCode();
-            if($statuscode>200)
+            $statusCode = $this->response->getStatusCode();
+            if($statusCode>200)
             {
                 return $this->response ;
             }
@@ -82,6 +83,7 @@ class Pipeline implements RequestHandlerInterface
 
             $this->response =  $this->process($this->request,$response);
         }
+
         return $this->response;
     }
 }
