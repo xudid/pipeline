@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed0cce15d50a5cfd4dc8b7e8ad8a41f6",
+    "content-hash": "4f64c8402939e2b6d4074b51b1204cda",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -721,6 +721,46 @@
                 }
             ],
             "time": "2023-03-01T10:25:55+00:00"
+        },
+        {
+            "name": "xudid/collections",
+            "version": "0.0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xudid/collections.git",
+                "reference": "524316c2f6cf9b6c17a5feeba3387f3b8751501e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xudid/collections/zipball/524316c2f6cf9b6c17a5feeba3387f3b8751501e",
+                "reference": "524316c2f6cf9b6c17a5feeba3387f3b8751501e",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^10.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Collections\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Didier Moindreau",
+                    "email": "dmoindreau@gmail.com"
+                }
+            ],
+            "description": "collection utilities",
+            "support": {
+                "issues": "https://github.com/xudid/collections/issues",
+                "source": "https://github.com/xudid/collections/tree/0.0.0.2"
+            },
+            "time": "2023-03-19T13:08:15+00:00"
         }
     ],
     "packages-dev": [
