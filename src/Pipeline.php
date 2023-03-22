@@ -8,12 +8,13 @@ use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Router\RequestHandler;
 
 class Pipeline implements RequestHandlerInterface
 {
+    use RequestHandler;
+
     private Collection $middlewares;
-    private ResponseInterface $response;
-    private ServerRequestInterface $request;
 
     public function __construct()
     {
@@ -21,14 +22,7 @@ class Pipeline implements RequestHandlerInterface
         $this->response = new Response();
     }
 
-    public function handle(ServerRequestInterface $request): ResponseInterface
-    {
-
-        $this->request = $request;
-        return $this->response;
-    }
-
-    public function pipe(MiddlewareInterface $middleware)
+    public function pipe(MiddlewareInterface $middleware): static
     {
         $this->middlewares->push($middleware) ;
         return $this;
