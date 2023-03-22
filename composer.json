@@ -20,7 +20,8 @@
     "require": {
         "guzzlehttp/guzzle": "^7.5",
         "psr/http-server-middleware": "^1.0",
-        "xudid/collections": "0.0.0.2"
+        "xudid/collections": "0.0.0.2",
+        "xudid/router": "^0.09.0"
     },
     "scripts": {
         "test": "vendor/bin/phpunit -c phpunit.xml"
