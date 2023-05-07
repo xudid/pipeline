@@ -1,4 +1,5 @@
 <?php
+
 namespace Xudid\Pipeline;
 
 use Psr\Http\Message\ServerRequestInterface;
@@ -7,59 +8,32 @@ use GuzzleHttp\Psr7\Response;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- *
- */
 class Pipeline implements RequestHandlerInterface
 {
+    private array $middlewares=[];
+    private int $index = 0;
+    private ResponseInterface $response;
+    private ServerRequestInterface $request;
 
-    /**
-     * @var $middlewares
-     */
-    private $middlewares=[];
-    /**
-     * @var int index : the middlewares current index
-     */
-    private $index = 0;
-    /**
-     * @var ResponseInterface $response
-     */
-    private $response;
-    /**
-     * @var ServerRequestInterface $request
-     */
-    private $request;
-
-    /**
-     *
-     */
-    function __construct()
+    public function __construct()
     {
         $this->response = new Response();
     }
-    /**
-     * @param ServerRequestInterface $request
-     * @return ResponseInterface
-     */
-    public function handle(ServerRequestInterface $request):ResponseInterface{
 
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
         $this->request = $request;
         return $this->response;
     }
-    /**
-     * @param MiddlewareInterface $middleware
-     */
-    public function pipe(MiddlewareInterface $middleware){
+
+    public function pipe(MiddlewareInterface $middleware)
+    {
         $this->middlewares[]=$middleware;
         return $this;
     }
-    /**
-     * @param ServerRequestInterface $request : the incomming Request
-     * @param ResponseInterface $response : the incomming response
-     * @return ResponseInterface
-     *
-     */
-    public function process(ServerRequestInterface $request , ResponseInterface $response): ResponseInterface{
+
+    public function process(ServerRequestInterface $request , ResponseInterface $response): ResponseInterface
+    {
         $this->request = $request;
         if(isset($this->middlewares[$this->index]))
         {

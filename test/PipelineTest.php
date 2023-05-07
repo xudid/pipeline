@@ -12,14 +12,14 @@ class PipelineTest extends TestCase
 {
     public function testHandleReturnResponseInterface()
     {
-        $pipeline = new Pipeline(new Response());
+        $pipeline = new Pipeline();
         $result = $pipeline->handle(ServerRequest::fromGlobals());
         $this->assertInstanceOf(ResponseInterface::class, $result);
     }
 
     public function testPipeReturnIsFluent()
     {
-        $pipeline = new Pipeline(new Response());
+        $pipeline = new Pipeline();
         $builder = $this->getMockBuilder(MiddlewareInterface::class);
         $middleware = $builder->getMock();
         $result = $pipeline->pipe($middleware);
@@ -28,10 +28,9 @@ class PipelineTest extends TestCase
 
     public function testProcessWithoutMiddlewareReturnResponse()
     {
+        $pipeline = new Pipeline();
         $response = new Response();
-        $pipeline = new Pipeline($response);
         $result = $pipeline->process(ServerRequest::fromGlobals(), $response);
         $this->assertInstanceOf(ResponseInterface::class, $result);
-
     }
 }
